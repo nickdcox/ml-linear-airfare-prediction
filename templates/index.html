@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>Airfare Prediction</title>
+  <link rel="stylesheet" href="static/styles.css">
+  <link rel=icon href=http://icons.iconarchive.com/icons/icons8/windows-8/32/Transport-Airplane-Takeoff-icon.png>
+  {{ gmap.js }}
+  <script src="http://code.jquery.com/jquery-latest.min.js"></script>
+  <link href="static/styles/select2.min.css" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/select2@4.1.0-beta.1/dist/js/select2.min.js"></script>
+  <script>
+    $(document).ready(function() {
+      $('.js-example-basic-single').select2({
+        dropdownAutoWidth: true
+      });
+      theme: "classic"
+    });
+  </script>
+</head>
+
+<style>
+  html,
+  body {
+    background: url('https://thepointsguy.global.ssl.fastly.net/us/originals/2019/06/airpoint-overhead-aerial-lax-ryan-patterson-2.jpg') center center no-repeat;
+    background-size: cover;
+    font-family: Verdana;
+    font-size: 12px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    line-height: 26.4px;
+  }
+
+  .box {
+    background-color: white;
+    height: 770px;
+    width: 725px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    margin-bottom: 0px;
+    padding: 10px;
+    border-radius: 25px;
+  }
+
+  input {
+    height: 25px;
+
+  }
+
+  table {
+    width: 100%;
+    padding-left: 75px;
+    padding-right: 75px;
+  }
+
+  checkbox {
+    margin-left: 5px;
+  }
+
+  select {
+    height: 30px;
+    margin-left: 0px;
+    font-family: Verdana;
+    font-size: 11px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    border-radius: 5px;
+    border: 1px solid #C8C8C8;
+    font-weight: normal;
+  }
+
+  label {
+    font-family: Verdana;
+    font-size: 13px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+  }
+
+  .selectionbox {
+    background-color: white;
+    width: 700px;
+    margin: auto;
+    padding-top: 15px;
+    border: 1px solid #10a5f5;
+  }
+
+  .mapbox {
+    background-color: white;
+    width: 700px;
+    margin: auto;
+    border-left: 1px solid #10a5f5;
+    border-right: 1px solid #10a5f5;
+    border-bottom: 1px solid #10a5f5;
+  }
+
+  .center {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+
+  h1 {
+    font-family: Verdana;
+    font-size: 24px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+    text-align: center;
+    background-color: #10a5f5;
+    color: white;
+    width: 700px;
+    height: 30px;
+    padding-top: 5px;
+    padding-bottom: 3px;
+    margin-bottom: auto;
+    margin-left: auto;
+    margin-right: auto;
+    border: 1px solid #10a5f5;
+  }
+
+  button[type=submit] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 8px 32px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+    font-family: Verdana;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+  }
+
+  .predictionbox {
+    background-color: yellow;
+    width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-family: Verdana;
+    font-size: 14px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 700;
+  }
+</style>
+
+<body>
+  <div class="box">
+    <h1>US Domestic Airfare Predictor</h1>
+    <div class="selectionbox">
+      <!-- Form to request user inputs for prediction model. -->
+      <form action="{{ url_for('predict')}}" method="post">
+        <table>
+          <tr>
+            <td align="left" min-width="85">
+
+              <label for="origin">From:</label>
+            </td>
+            <td>
+              <select name="origin" id="origin" required="required" class="js-example-basic-single">
+                <option selected></option>
+                <option value="ABE">ABE - Allentown/Bethlehem/Easton, PA: Lehigh Valley International</option>
+                <option value="ABQ">ABQ - Albuquerque, NM: Albuquerque International Sunport</option>
+                <option value="ACY">ACY - Atlantic City, NJ: Atlantic City International</option>
+                <option value="AGS">AGS - Augusta, GA: Augusta Regional at Bush Field</option>
+                <option value="ALB">ALB - Albany, NY: Albany International</option>
+                <option value="AMA">AMA - Amarillo, TX: Rick Husband Amarillo International</option>
+                <option value="ANC">ANC - Anchorage, AK: Ted Stevens Anchorage International</option>
+                <option value="ASE">ASE - Aspen, CO: Aspen Pitkin County Sardy Field</option>
+                <option value="ATL">ATL - Atlanta, GA: Hartsfield-Jackson Atlanta International</option>
+                <option value="ATW">ATW - Appleton, WI: Appleton International</option>
+                <option value="AUS">AUS - Austin, TX: Austin - Bergstrom International</option>
+                <option value="AVL">AVL - Asheville, NC: Asheville Regional</option>
+                <option value="AVP">AVP - Scranton/Wilkes-Barre, PA: Wilkes Barre Scranton International</option>
+                <option value="BDL">BDL - Hartford, CT: Bradley International</option>
+                <option value="BGR">BGR - Bangor, ME: Bangor International</option>
+                <option value="BHM">BHM - Birmingham, AL: Birmingham-Shuttlesworth International</option>
+                <option value="BIL">BIL - Billings, MT: Billings Logan International</option>
+                <option value="BIS">BIS - Bismarck/Mandan, ND: Bismarck Municipal</option>
+                <option value="BLI">BLI - Bellingham, WA: Bellingham International</option>
+                <option value="BMI">BMI - Bloomington/Normal, IL: Central Il Regional Airport at Bloomington</option>
+                <option value="BNA">BNA - Nashville, TN: Nashville International</option>
+                <option value="BOI">BOI - Boise, ID: Boise Air Terminal</option>
+                <option value="BOS">BOS - Boston, MA: Logan International</option>
+                <option value="BQN">BQN - Aguadilla, PR: Rafael Hernandez</option>
+                <option value="BTR">BTR - Baton Rouge, LA: Baton Rouge Metropolitan/Ryan Field</option>
+                <option value="BTV">BTV - Burlington, VT: Burlington International</option>
+                <option value="BUF">BUF - Buffalo, NY: Buffalo Niagara International</option>
+                <option value="BUR">BUR - Burbank, CA: Bob Hope</option>
+                <option value="BWI">BWI - Baltimore, MD: Baltimore/Washington International Thurgood Marshall</option>
+                <option value="BZN">BZN - Bozeman, MT: Bozeman Yellowstone International</option>
+                <option value="CAE">CAE - Columbia, SC: Columbia Metropolitan</option>
+                <option value="CAK">CAK - Akron, OH: Akron-Canton Regional</option>
+                <option value="CHA">CHA - Chattanooga, TN: Lovell Field</option>
+                <option value="CHO">CHO - Charlottesville, VA: Charlottesville Albemarle</option>
+                <option value="CHS">CHS - Charleston, SC: Charleston AFB/International</option>
+                <option value="CID">CID - Cedar Rapids/Iowa City, IA: The Eastern Iowa</option>
+                <option value="CLE">CLE - Cleveland, OH: Cleveland-Hopkins International</option>
+                <option value="CLT">CLT - Charlotte, NC: Charlotte Douglas International</option>
+                <option value="CMH">CMH - Columbus, OH: John Glenn Columbus International</option>
+                <option value="COS">COS - Colorado Springs, CO: City of Colorado Springs Municipal</option>
+                <option value="CRP">CRP - Corpus Christi, TX: Corpus Christi International</option>
+                <option value="CRW">CRW - Charleston/Dunbar, WV: Yeager</option>
+                <option value="CVG">CVG - Cincinnati, OH: Cincinnati/Northern Kentucky International</option>
+                <option value="DAB">DAB - Daytona Beach, FL: Daytona Beach International</option>
+                <option value="DAL">DAL - Dallas, TX: Dallas Love Field</option>
+                <option value="DAY">DAY - Dayton, OH: James M Cox/Dayton International</option>
+                <option value="DCA">DCA - Washington, DC: Ronald Reagan Washington National</option>
+                <option value="DEN">DEN - Denver, CO: Denver International</option>
+                <option value="DFW">DFW - Dallas/Fort Worth, TX: Dallas/Fort Worth International</option>
+                <option value="DRO">DRO - Durango, CO: Durango La Plata County</option>
+                <option value="DSM">DSM - Des Moines, IA: Des Moines International</option>
+                <option value="DTW">DTW - Detroit, MI: Detroit Metro Wayne County</option>
+                <option value="ECP">ECP - Panama City, FL: Northwest Florida Beaches International</option>
+                <option value="EGE">EGE - Eagle, CO: Eagle County Regional</option>
+                <option value="ELP">ELP - El Paso, TX: El Paso International</option>
+                <option value="EUG">EUG - Eugene, OR: Mahlon Sweet Field</option>
+                <option value="EVV">EVV - Evansville, IN: Evansville Regional</option>
+                <option value="EWR">EWR - Newark, NJ: Newark Liberty International</option>
+                <option value="EYW">EYW - Key West, FL: Key West International</option>
+                <option value="FAI">FAI - Fairbanks, AK: Fairbanks International</option>
+                <option value="FAR">FAR - Fargo, ND: Hector International</option>
+                <option value="FAT">FAT - Fresno, CA: Fresno Yosemite International</option>
+                <option value="FAY">FAY - Fayetteville, NC: Fayetteville Regional/Grannis Field</option>
+                <option value="FLL">FLL - Fort Lauderdale, FL: Fort Lauderdale-Hollywood International</option>
+                <option value="FNT">FNT - Flint, MI: Bishop International</option>
+                <option value="FSD">FSD - Sioux Falls, SD: Joe Foss Field</option>
+                <option value="FWA">FWA - Fort Wayne, IN: Fort Wayne International</option>
+                <option value="GCN">GCN - Grand Canyon, AZ: Grand Canyon National Park</option>
+                <option value="GEG">GEG - Spokane, WA: Spokane International</option>
+                <option value="GJT">GJT - Grand Junction, CO: Grand Junction Regional</option>
+                <option value="GNV">GNV - Gainesville, FL: Gainesville Regional</option>
+                <option value="GPI">GPI - Guapi, Colombia: Guapi Airport</option>
+                <option value="GPT">GPT - Gulfport/Biloxi, MS: Gulfport-Biloxi International</option>
+                <option value="GRB">GRB - Green Bay, WI: Green Bay Austin Straubel International</option>
+                <option value="GRK">GRK - Killeen, TX: Robert Gray AAF</option>
+                <option value="GRR">GRR - Grand Rapids, MI: Gerald R. Ford International</option>
+                <option value="GSO">GSO - Greensboro/High Point, NC: Piedmont Triad International</option>
+                <option value="GSP">GSP - Greer, SC: Greenville-Spartanburg International</option>
+                <option value="GTF">GTF - Great Falls, MT: Great Falls International</option>
+                <option value="GUM">GUM - Guam, TT: Guam International</option>
+                <option value="HOU">HOU - Houston, TX: William P Hobby</option>
+                <option value="HPN">HPN - White Plains, NY: Westchester County</option>
+                <option value="HRL">HRL - Harlingen/San Benito, TX: Valley International</option>
+                <option value="HSV">HSV - Huntsville, AL: Huntsville International-Carl T Jones Field</option>
+                <option value="IAD">IAD - Washington, DC: Washington Dulles International</option>
+                <option value="IAH">IAH - Houston, TX: George Bush Intercontinental/Houston</option>
+                <option value="ICT">ICT - Wichita, KS: Wichita Dwight D Eisenhower National</option>
+                <option value="IDA">IDA - Idaho Falls, ID: Idaho Falls Regional</option>
+                <option value="ILM">ILM - Wilmington, NC: Wilmington International</option>
+                <option value="IND">IND - Indianapolis, IN: Indianapolis International</option>
+                <option value="ISP">ISP - Islip, NY: Long Island MacArthur</option>
+                <option value="ITO">ITO - Hilo, HI: Hilo International</option>
+                <option value="IWA">IWA - Ivanovo, Russia: Ivanovo Airport</option>
+                <option value="JAC">JAC - Jackson, WY: Jackson Hole</option>
+                <option value="JAN">JAN - Jackson/Vicksburg, MS: Jackson Medgar Wiley Evers International</option>
+                <option value="JAX">JAX - Jacksonville, FL: Jacksonville International</option>
+                <option value="JFK">JFK - New York, NY: John F. Kennedy International</option>
+                <option value="JNU">JNU - Juneau, AK: Juneau International</option>
+                <option value="KOA">KOA - Kona, HI: Ellison Onizuka Kona International at Keahole</option>
+                <option value="LAN">LAN - Lansing, MI: Capital Region International</option>
+                <option value="LAS">LAS - Las Vegas, NV: McCarran International</option>
+                <option value="LAX">LAX - Los Angeles, CA: Los Angeles International</option>
+                <option value="LBB">LBB - Lubbock, TX: Lubbock Preston Smith International</option>
+                <option value="LEX">LEX - Lexington, KY: Blue Grass</option>
+                <option value="LFT">LFT - Lafayette, LA: Lafayette Regional Paul Fournet Field</option>
+                <option value="LGA">LGA - New York, NY: LaGuardia</option>
+                <option value="LGB">LGB - Long Beach, CA: Long Beach Airport</option>
+                <option value="LIH">LIH - Lihue, HI: Lihue Airport</option>
+                <option value="LIT">LIT - Little Rock, AR: Bill and Hillary Clinton Nat Adams Field</option>
+                <option value="LNK">LNK - Lincoln, NE: Lincoln Airport</option>
+                <option value="MAF">MAF - Midland/Odessa, TX: Midland International Air and Space Port</option>
+                <option value="MCI">MCI - Kansas City, MO: Kansas City International</option>
+                <option value="MCO">MCO - Orlando, FL: Orlando International</option>
+                <option value="MDT">MDT - Harrisburg, PA: Harrisburg International</option>
+                <option value="MDW">MDW - Chicago, IL: Chicago Midway International</option>
+                <option value="MEM">MEM - Memphis, TN: Memphis International</option>
+                <option value="MFE">MFE - Mission/McAllen/Edinburg, TX: McAllen Miller International</option>
+                <option value="MFR">MFR - Medford, OR: Rogue Valley International - Medford</option>
+                <option value="MGM">MGM - Montgomery, AL: Montgomery Regional</option>
+                <option value="MHT">MHT - Manchester, NH: Manchester-Boston Regional</option>
+                <option value="MIA">MIA - Miami, FL: Miami International</option>
+                <option value="MKE">MKE - Milwaukee, WI: General Mitchell International</option>
+                <option value="MLB">MLB - Melbourne, FL: Melbourne International</option>
+                <option value="MLI">MLI - Moline, IL: Quad City International</option>
+                <option value="MOB">MOB - Mobile, AL: Mobile Regional</option>
+                <option value="MRY">MRY - Monterey, CA: Monterey Regional</option>
+                <option value="MSN">MSN - Madison, WI: Dane County Regional-Truax Field</option>
+                <option value="MSO">MSO - Missoula, MT: Missoula International</option>
+                <option value="MSP">MSP - Minneapolis, MN: Minneapolis-St Paul International</option>
+                <option value="MSY">MSY - New Orleans, LA: Louis Armstrong New Orleans International</option>
+                <option value="MYR">MYR - Myrtle Beach, SC: Myrtle Beach International</option>
+                <option value="OAK">OAK - Oakland, CA: Metropolitan Oakland International</option>
+                <option value="OGG">OGG - Kahului, HI: Kahului Airport</option>
+                <option value="OKC">OKC - Oklahoma City, OK: Will Rogers World</option>
+                <option value="OMA">OMA - Omaha, NE: Eppley Airfield</option>
+                <option value="ONT">ONT - Ontario, CA: Ontario International</option>
+                <option value="ORD">ORD - Chicago, IL: Chicago O'Hare International</option>
+                <option value="ORF">ORF - Norfolk, VA: Norfolk International</option>
+                <option value="PAE">PAE - Everett, WA: Snohomish County</option>
+                <option value="PBI">PBI - West Palm Beach/Palm Beach, FL: Palm Beach International</option>
+                <option value="PDX">PDX - Portland, OR: Portland International</option>
+                <option value="PGD">PGD - Punta Gorda, FL: Punta Gorda Airport</option>
+                <option value="PHF">PHF - Newport News/Williamsburg, VA: Newport News/Williamsburg International</option>
+                <option value="PHL">PHL - Philadelphia, PA: Philadelphia International</option>
+                <option value="PHX">PHX - Phoenix, AZ: Phoenix Sky Harbor International</option>
+                <option value="PIA">PIA - Peoria, IL: General Downing - Peoria International</option>
+                <option value="PIE">PIE - St. Petersburg, FL: St Pete Clearwater International</option>
+                <option value="PIT">PIT - Pittsburgh, PA: Pittsburgh International</option>
+                <option value="PNS">PNS - Pensacola, FL: Pensacola International</option>
+                <option value="PSC">PSC - Pasco/Kennewick/Richland, WA: Tri Cities</option>
+                <option value="PSP">PSP - Palm Springs, CA: Palm Springs International</option>
+                <option value="PVD">PVD - Providence, RI: Theodore Francis Green State</option>
+                <option value="PWM">PWM - Portland, ME: Portland International Jetport</option>
+                <option value="RAP">RAP - Rapid City, SD: Rapid City Regional</option>
+                <option value="RDM">RDM - Bend/Redmond, OR: Roberts Field</option>
+                <option value="RDU">RDU - Raleigh/Durham, NC: Raleigh-Durham International</option>
+                <option value="RIC">RIC - Richmond, VA: Richmond International</option>
+                <option value="RNO">RNO - Reno, NV: Reno/Tahoe International</option>
+                <option value="ROA">ROA - Roanoke, VA: Roanoke Blacksburg Regional Woodrum Field</option>
+                <option value="ROC">ROC - Rochester, NY: Greater Rochester International</option>
+                <option value="RST">RST - Rochester, MN: Rochester International</option>
+                <option value="RSW">RSW - Fort Myers, FL: Southwest Florida International</option>
+                <option value="SAN">SAN - San Diego, CA: San Diego International</option>
+                <option value="SAT">SAT - San Antonio, TX: San Antonio International</option>
+                <option value="SAV">SAV - Savannah, GA: Savannah/Hilton Head International</option>
+                <option value="SBA">SBA - Santa Barbara, CA: Santa Barbara Municipal</option>
+                <option value="SBN">SBN - South Bend, IN: South Bend International</option>
+                <option value="SBP">SBP - San Luis Obispo, CA: San Luis County Regional</option>
+                <option value="SDF">SDF - Louisville, KY: Louisville Muhammad Ali International</option>
+                <option value="SEA">SEA - Seattle, WA: Seattle/Tacoma International</option>
+                <option value="SFB">SFB - Sanford, FL: Orlando Sanford International</option>
+                <option value="SFO">SFO - San Francisco, CA: San Francisco International</option>
+                <option value="SGF">SGF - Springfield, MO: Springfield-Branson National</option>
+                <option value="SHV">SHV - Shreveport, LA: Shreveport Regional</option>
+                <option value="SJC">SJC - San Jose, CA: Norman Y. Mineta San Jose International</option>
+                <option value="SJU">SJU - San Juan, PR: Luis Munoz Marin International</option>
+                <option value="SLC">SLC - Salt Lake City, UT: Salt Lake City International</option>
+                <option value="SMF">SMF - Sacramento, CA: Sacramento International</option>
+                <option value="SNA">SNA - Santa Ana, CA: John Wayne Airport-Orange County</option>
+                <option value="SRQ">SRQ - Sarasota/Bradenton, FL: Sarasota/Bradenton International</option>
+                <option value="STL">STL - St. Louis, MO: St Louis Lambert International</option>
+                <option value="STS">STS - Santa Rosa, CA: Charles M. Schulz - Sonoma County</option>
+                <option value="STT">STT - Charlotte Amalie, VI: Cyril E King</option>
+                <option value="STX">STX - Christiansted, VI: Henry E. Rohlsen</option>
+                <option value="SWF">SWF - Newburgh/Poughkeepsie, NY: New York Stewart International</option>
+                <option value="SYR">SYR - Syracuse, NY: Syracuse Hancock International</option>
+                <option value="TLH">TLH - Tallahassee, FL: Tallahassee International</option>
+                <option value="TPA">TPA - Tampa, FL: Tampa International</option>
+                <option value="TRI">TRI - Bristol/Johnson City/Kingsport, TN: Tri Cities</option>
+                <option value="TTN">TTN - Trenton, NJ: Trenton Mercer</option>
+                <option value="TUL">TUL - Tulsa, OK: Tulsa International</option>
+                <option value="TUS">TUS - Tucson, AZ: Tucson International</option>
+                <option value="TVC">TVC - Traverse City, MI: Cherry Capital</option>
+                <option value="TYS">TYS - Knoxville, TN: McGhee Tyson</option>
+                <option value="VPS">VPS - Valparaiso, FL: Eglin AFB Destin Fort Walton Beach</option>
+                <option value="XNA">XNA - Fayetteville, AR: Northwest Arkansas Regional</option>
+            </td>
+          </tr>
+          <tr>
+            <td align="left" style="min-width:85px">
+              <label for="dest">To:</label>
+            </td>
+            <td>
+              <select name="dest" id="dest" required="required" class="js-example-basic-single">
+                <option selected></option>
+                <option value="ABE">ABE - Allentown/Bethlehem/Easton, PA: Lehigh Valley International</option>
+                <option value="ABQ">ABQ - Albuquerque, NM: Albuquerque International Sunport</option>
+                <option value="ACY">ACY - Atlantic City, NJ: Atlantic City International</option>
+                <option value="AGS">AGS - Augusta, GA: Augusta Regional at Bush Field</option>
+                <option value="ALB">ALB - Albany, NY: Albany International</option>
+                <option value="AMA">AMA - Amarillo, TX: Rick Husband Amarillo International</option>
+                <option value="ANC">ANC - Anchorage, AK: Ted Stevens Anchorage International</option>
+                <option value="ASE">ASE - Aspen, CO: Aspen Pitkin County Sardy Field</option>
+                <option value="ATL">ATL - Atlanta, GA: Hartsfield-Jackson Atlanta International</option>
+                <option value="ATW">ATW - Appleton, WI: Appleton International</option>
+                <option value="AUS">AUS - Austin, TX: Austin - Bergstrom International</option>
+                <option value="AVL">AVL - Asheville, NC: Asheville Regional</option>
+                <option value="AVP">AVP - Scranton/Wilkes-Barre, PA: Wilkes Barre Scranton International</option>
+                <option value="BDL">BDL - Hartford, CT: Bradley International</option>
+                <option value="BGR">BGR - Bangor, ME: Bangor International</option>
+                <option value="BHM">BHM - Birmingham, AL: Birmingham-Shuttlesworth International</option>
+                <option value="BIL">BIL - Billings, MT: Billings Logan International</option>
+                <option value="BIS">BIS - Bismarck/Mandan, ND: Bismarck Municipal</option>
+                <option value="BLI">BLI - Bellingham, WA: Bellingham International</option>
+                <option value="BMI">BMI - Bloomington/Normal, IL: Central Il Regional Airport at Bloomington</option>
+                <option value="BNA">BNA - Nashville, TN: Nashville International</option>
+                <option value="BOI">BOI - Boise, ID: Boise Air Terminal</option>
+                <option value="BOS">BOS - Boston, MA: Logan International</option>
+                <option value="BQN">BQN - Aguadilla, PR: Rafael Hernandez</option>
+                <option value="BTR">BTR - Baton Rouge, LA: Baton Rouge Metropolitan/Ryan Field</option>
+                <option value="BTV">BTV - Burlington, VT: Burlington International</option>
+                <option value="BUF">BUF - Buffalo, NY: Buffalo Niagara International</option>
+                <option value="BUR">BUR - Burbank, CA: Bob Hope</option>
+                <option value="BWI">BWI - Baltimore, MD: Baltimore/Washington International Thurgood Marshall</option>
+                <option value="BZN">BZN - Bozeman, MT: Bozeman Yellowstone International</option>
+                <option value="CAE">CAE - Columbia, SC: Columbia Metropolitan</option>
+                <option value="CAK">CAK - Akron, OH: Akron-Canton Regional</option>
+                <option value="CHA">CHA - Chattanooga, TN: Lovell Field</option>
+                <option value="CHO">CHO - Charlottesville, VA: Charlottesville Albemarle</option>
+                <option value="CHS">CHS - Charleston, SC: Charleston AFB/International</option>
+                <option value="CID">CID - Cedar Rapids/Iowa City, IA: The Eastern Iowa</option>
+                <option value="CLE">CLE - Cleveland, OH: Cleveland-Hopkins International</option>
+                <option value="CLT">CLT - Charlotte, NC: Charlotte Douglas International</option>
+                <option value="CMH">CMH - Columbus, OH: John Glenn Columbus International</option>
+                <option value="COS">COS - Colorado Springs, CO: City of Colorado Springs Municipal</option>
+                <option value="CRP">CRP - Corpus Christi, TX: Corpus Christi International</option>
+                <option value="CRW">CRW - Charleston/Dunbar, WV: Yeager</option>
+                <option value="CVG">CVG - Cincinnati, OH: Cincinnati/Northern Kentucky International</option>
+                <option value="DAB">DAB - Daytona Beach, FL: Daytona Beach International</option>
+                <option value="DAL">DAL - Dallas, TX: Dallas Love Field</option>
+                <option value="DAY">DAY - Dayton, OH: James M Cox/Dayton International</option>
+                <option value="DCA">DCA - Washington, DC: Ronald Reagan Washington National</option>
+                <option value="DEN">DEN - Denver, CO: Denver International</option>
+                <option value="DFW">DFW - Dallas/Fort Worth, TX: Dallas/Fort Worth International</option>
+                <option value="DRO">DRO - Durango, CO: Durango La Plata County</option>
+                <option value="DSM">DSM - Des Moines, IA: Des Moines International</option>
+                <option value="DTW">DTW - Detroit, MI: Detroit Metro Wayne County</option>
+                <option value="ECP">ECP - Panama City, FL: Northwest Florida Beaches International</option>
+                <option value="EGE">EGE - Eagle, CO: Eagle County Regional</option>
+                <option value="ELP">ELP - El Paso, TX: El Paso International</option>
+                <option value="EUG">EUG - Eugene, OR: Mahlon Sweet Field</option>
+                <option value="EVV">EVV - Evansville, IN: Evansville Regional</option>
+                <option value="EWR">EWR - Newark, NJ: Newark Liberty International</option>
+                <option value="EYW">EYW - Key West, FL: Key West International</option>
+                <option value="FAI">FAI - Fairbanks, AK: Fairbanks International</option>
+                <option value="FAR">FAR - Fargo, ND: Hector International</option>
+                <option value="FAT">FAT - Fresno, CA: Fresno Yosemite International</option>
+                <option value="FAY">FAY - Fayetteville, NC: Fayetteville Regional/Grannis Field</option>
+                <option value="FLL">FLL - Fort Lauderdale, FL: Fort Lauderdale-Hollywood International</option>
+                <option value="FNT">FNT - Flint, MI: Bishop International</option>
+                <option value="FSD">FSD - Sioux Falls, SD: Joe Foss Field</option>
+                <option value="FWA">FWA - Fort Wayne, IN: Fort Wayne International</option>
+                <option value="GCN">GCN - Grand Canyon, AZ: Grand Canyon National Park</option>
+                <option value="GEG">GEG - Spokane, WA: Spokane International</option>
+                <option value="GJT">GJT - Grand Junction, CO: Grand Junction Regional</option>
+                <option value="GNV">GNV - Gainesville, FL: Gainesville Regional</option>
+                <option value="GPI">GPI - Guapi, Colombia: Guapi Airport</option>
+                <option value="GPT">GPT - Gulfport/Biloxi, MS: Gulfport-Biloxi International</option>
+                <option value="GRB">GRB - Green Bay, WI: Green Bay Austin Straubel International</option>
+                <option value="GRK">GRK - Killeen, TX: Robert Gray AAF</option>
+                <option value="GRR">GRR - Grand Rapids, MI: Gerald R. Ford International</option>
+                <option value="GSO">GSO - Greensboro/High Point, NC: Piedmont Triad International</option>
+                <option value="GSP">GSP - Greer, SC: Greenville-Spartanburg International</option>
+                <option value="GTF">GTF - Great Falls, MT: Great Falls International</option>
+                <option value="GUM">GUM - Guam, TT: Guam International</option>
+                <option value="HOU">HOU - Houston, TX: William P Hobby</option>
+                <option value="HPN">HPN - White Plains, NY: Westchester County</option>
+                <option value="HRL">HRL - Harlingen/San Benito, TX: Valley International</option>
+                <option value="HSV">HSV - Huntsville, AL: Huntsville International-Carl T Jones Field</option>
+                <option value="IAD">IAD - Washington, DC: Washington Dulles International</option>
+                <option value="IAH">IAH - Houston, TX: George Bush Intercontinental/Houston</option>
+                <option value="ICT">ICT - Wichita, KS: Wichita Dwight D Eisenhower National</option>
+                <option value="IDA">IDA - Idaho Falls, ID: Idaho Falls Regional</option>
+                <option value="ILM">ILM - Wilmington, NC: Wilmington International</option>
+                <option value="IND">IND - Indianapolis, IN: Indianapolis International</option>
+                <option value="ISP">ISP - Islip, NY: Long Island MacArthur</option>
+                <option value="ITO">ITO - Hilo, HI: Hilo International</option>
+                <option value="IWA">IWA - Ivanovo, Russia: Ivanovo Airport</option>
+                <option value="JAC">JAC - Jackson, WY: Jackson Hole</option>
+                <option value="JAN">JAN - Jackson/Vicksburg, MS: Jackson Medgar Wiley Evers International</option>
+                <option value="JAX">JAX - Jacksonville, FL: Jacksonville International</option>
+                <option value="JFK">JFK - New York, NY: John F. Kennedy International</option>
+                <option value="JNU">JNU - Juneau, AK: Juneau International</option>
+                <option value="KOA">KOA - Kona, HI: Ellison Onizuka Kona International at Keahole</option>
+                <option value="LAN">LAN - Lansing, MI: Capital Region International</option>
+                <option value="LAS">LAS - Las Vegas, NV: McCarran International</option>
+                <option value="LAX">LAX - Los Angeles, CA: Los Angeles International</option>
+                <option value="LBB">LBB - Lubbock, TX: Lubbock Preston Smith International</option>
+                <option value="LEX">LEX - Lexington, KY: Blue Grass</option>
+                <option value="LFT">LFT - Lafayette, LA: Lafayette Regional Paul Fournet Field</option>
+                <option value="LGA">LGA - New York, NY: LaGuardia</option>
+                <option value="LGB">LGB - Long Beach, CA: Long Beach Airport</option>
+                <option value="LIH">LIH - Lihue, HI: Lihue Airport</option>
+                <option value="LIT">LIT - Little Rock, AR: Bill and Hillary Clinton Nat Adams Field</option>
+                <option value="LNK">LNK - Lincoln, NE: Lincoln Airport</option>
+                <option value="MAF">MAF - Midland/Odessa, TX: Midland International Air and Space Port</option>
+                <option value="MCI">MCI - Kansas City, MO: Kansas City International</option>
+                <option value="MCO">MCO - Orlando, FL: Orlando International</option>
+                <option value="MDT">MDT - Harrisburg, PA: Harrisburg International</option>
+                <option value="MDW">MDW - Chicago, IL: Chicago Midway International</option>
+                <option value="MEM">MEM - Memphis, TN: Memphis International</option>
+                <option value="MFE">MFE - Mission/McAllen/Edinburg, TX: McAllen Miller International</option>
+                <option value="MFR">MFR - Medford, OR: Rogue Valley International - Medford</option>
+                <option value="MGM">MGM - Montgomery, AL: Montgomery Regional</option>
+                <option value="MHT">MHT - Manchester, NH: Manchester-Boston Regional</option>
+                <option value="MIA">MIA - Miami, FL: Miami International</option>
+                <option value="MKE">MKE - Milwaukee, WI: General Mitchell International</option>
+                <option value="MLB">MLB - Melbourne, FL: Melbourne International</option>
+                <option value="MLI">MLI - Moline, IL: Quad City International</option>
+                <option value="MOB">MOB - Mobile, AL: Mobile Regional</option>
+                <option value="MRY">MRY - Monterey, CA: Monterey Regional</option>
+                <option value="MSN">MSN - Madison, WI: Dane County Regional-Truax Field</option>
+                <option value="MSO">MSO - Missoula, MT: Missoula International</option>
+                <option value="MSP">MSP - Minneapolis, MN: Minneapolis-St Paul International</option>
+                <option value="MSY">MSY - New Orleans, LA: Louis Armstrong New Orleans International</option>
+                <option value="MYR">MYR - Myrtle Beach, SC: Myrtle Beach International</option>
+                <option value="OAK">OAK - Oakland, CA: Metropolitan Oakland International</option>
+                <option value="OGG">OGG - Kahului, HI: Kahului Airport</option>
+                <option value="OKC">OKC - Oklahoma City, OK: Will Rogers World</option>
+                <option value="OMA">OMA - Omaha, NE: Eppley Airfield</option>
+                <option value="ONT">ONT - Ontario, CA: Ontario International</option>
+                <option value="ORD">ORD - Chicago, IL: Chicago O'Hare International</option>
+                <option value="ORF">ORF - Norfolk, VA: Norfolk International</option>
+                <option value="PAE">PAE - Everett, WA: Snohomish County</option>
+                <option value="PBI">PBI - West Palm Beach/Palm Beach, FL: Palm Beach International</option>
+                <option value="PDX">PDX - Portland, OR: Portland International</option>
+                <option value="PGD">PGD - Punta Gorda, FL: Punta Gorda Airport</option>
+                <option value="PHF">PHF - Newport News/Williamsburg, VA: Newport News/Williamsburg International</option>
+                <option value="PHL">PHL - Philadelphia, PA: Philadelphia International</option>
+                <option value="PHX">PHX - Phoenix, AZ: Phoenix Sky Harbor International</option>
+                <option value="PIA">PIA - Peoria, IL: General Downing - Peoria International</option>
+                <option value="PIE">PIE - St. Petersburg, FL: St Pete Clearwater International</option>
+                <option value="PIT">PIT - Pittsburgh, PA: Pittsburgh International</option>
+                <option value="PNS">PNS - Pensacola, FL: Pensacola International</option>
+                <option value="PSC">PSC - Pasco/Kennewick/Richland, WA: Tri Cities</option>
+                <option value="PSP">PSP - Palm Springs, CA: Palm Springs International</option>
+                <option value="PVD">PVD - Providence, RI: Theodore Francis Green State</option>
+                <option value="PWM">PWM - Portland, ME: Portland International Jetport</option>
+                <option value="RAP">RAP - Rapid City, SD: Rapid City Regional</option>
+                <option value="RDM">RDM - Bend/Redmond, OR: Roberts Field</option>
+                <option value="RDU">RDU - Raleigh/Durham, NC: Raleigh-Durham International</option>
+                <option value="RIC">RIC - Richmond, VA: Richmond International</option>
+                <option value="RNO">RNO - Reno, NV: Reno/Tahoe International</option>
+                <option value="ROA">ROA - Roanoke, VA: Roanoke Blacksburg Regional Woodrum Field</option>
+                <option value="ROC">ROC - Rochester, NY: Greater Rochester International</option>
+                <option value="RST">RST - Rochester, MN: Rochester International</option>
+                <option value="RSW">RSW - Fort Myers, FL: Southwest Florida International</option>
+                <option value="SAN">SAN - San Diego, CA: San Diego International</option>
+                <option value="SAT">SAT - San Antonio, TX: San Antonio International</option>
+                <option value="SAV">SAV - Savannah, GA: Savannah/Hilton Head International</option>
+                <option value="SBA">SBA - Santa Barbara, CA: Santa Barbara Municipal</option>
+                <option value="SBN">SBN - South Bend, IN: South Bend International</option>
+                <option value="SBP">SBP - San Luis Obispo, CA: San Luis County Regional</option>
+                <option value="SDF">SDF - Louisville, KY: Louisville Muhammad Ali International</option>
+                <option value="SEA">SEA - Seattle, WA: Seattle/Tacoma International</option>
+                <option value="SFB">SFB - Sanford, FL: Orlando Sanford International</option>
+                <option value="SFO">SFO - San Francisco, CA: San Francisco International</option>
+                <option value="SGF">SGF - Springfield, MO: Springfield-Branson National</option>
+                <option value="SHV">SHV - Shreveport, LA: Shreveport Regional</option>
+                <option value="SJC">SJC - San Jose, CA: Norman Y. Mineta San Jose International</option>
+                <option value="SJU">SJU - San Juan, PR: Luis Munoz Marin International</option>
+                <option value="SLC">SLC - Salt Lake City, UT: Salt Lake City International</option>
+                <option value="SMF">SMF - Sacramento, CA: Sacramento International</option>
+                <option value="SNA">SNA - Santa Ana, CA: John Wayne Airport-Orange County</option>
+                <option value="SRQ">SRQ - Sarasota/Bradenton, FL: Sarasota/Bradenton International</option>
+                <option value="STL">STL - St. Louis, MO: St Louis Lambert International</option>
+                <option value="STS">STS - Santa Rosa, CA: Charles M. Schulz - Sonoma County</option>
+                <option value="STT">STT - Charlotte Amalie, VI: Cyril E King</option>
+                <option value="STX">STX - Christiansted, VI: Henry E. Rohlsen</option>
+                <option value="SWF">SWF - Newburgh/Poughkeepsie, NY: New York Stewart International</option>
+                <option value="SYR">SYR - Syracuse, NY: Syracuse Hancock International</option>
+                <option value="TLH">TLH - Tallahassee, FL: Tallahassee International</option>
+                <option value="TPA">TPA - Tampa, FL: Tampa International</option>
+                <option value="TRI">TRI - Bristol/Johnson City/Kingsport, TN: Tri Cities</option>
+                <option value="TTN">TTN - Trenton, NJ: Trenton Mercer</option>
+                <option value="TUL">TUL - Tulsa, OK: Tulsa International</option>
+                <option value="TUS">TUS - Tucson, AZ: Tucson International</option>
+                <option value="TVC">TVC - Traverse City, MI: Cherry Capital</option>
+                <option value="TYS">TYS - Knoxville, TN: McGhee Tyson</option>
+                <option value="VPS">VPS - Valparaiso, FL: Eglin AFB Destin Fort Walton Beach</option>
+                <option value="XNA">XNA - Fayetteville, AR: Northwest Arkansas Regional</option>
+            </td>
+          </tr>
+
+
+
+          <tr>
+            <td align="left" min-width="85">
+              <label for="airline">Airline:</label>
+            </td>
+            <td>
+              <select id="airline" name="airline" required="required" class="js-example-basic-single">
+                <option style="display:none">
+                <option value="1">Alaska Airlines</option>
+                <option value="5">Allegiant Air</option>
+                <option value="0">American Airlines</option>
+                <option value="3">Delta Air Lines</option>
+                <option value="4">Frontier Airlines</option>
+                <option value="6">Hawaiian Airlines</option>
+                <option value="2">Jetblue Airways</option>
+                <option value="10">Southwest Airlines</option>
+                <option value="7">Spirit Airlines</option>
+                <option value="8">Sun Country Airlines</option>
+                <option value="9">United Airlines</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="left" min-width="85">
+              <label for="class">Class:</label>
+            </td>
+            <td>
+              <select id="class" name="class" required="required" class="js-example-basic-single">
+                <option style="display:none">
+                <option value="1">Coach</option>
+                <option value="0">Business</option>
+                <option value="2">First</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <td align="left" min-width="85">
+              <label for="month">Month:</label>
+            </td>
+            <td>
+              <select id="month" name="month" required="required" class="js-example-basic-single">
+                <option style="display:none">
+                <option value="1">January</option>
+                <option value="2">February</option>
+                <option value="3">March</option>
+                <option value="4">April</option>
+                <option value="5">May</option>
+                <option value="6">June</option>
+                <option value="7">July</option>
+                <option value="8">August</option>
+                <option value="9">September</option>
+                <option value="10">October</option>
+                <option value="11">November</option>
+                <option value="12">December</option>
+              </select>
+            </td>
+          </tr>
+          <tr>
+            <table>
+              <tr>
+                <td align="left" style="width:85px">
+                  <label for="nonstop">Non-Stop: </label>
+                </td>
+                <td align="left">
+                  <input type="checkbox" name="nonstop" value="1" />
+                </td>
+                <td align="right">
+                  <div class="buttonHolder">
+                    <button type="submit" class="btn btn-primary btn-block btn-large">Predict</button>
+                  </div>
+                </td>
+              </tr>
+            </table>
+
+          </tr>
+        </table>
+      </form>
+      <!-- Display result from prediction model. -->
+      <div class="predictionbox">
+        {{ prediction_text }}
+      </div>
+      <br>
+    </div>
+    <!-- Display Google Map, displaying route selected. -->
+    <div class="mapbox">
+      {{ gmap.html }}
+    </div>
+  </div>
+</body>
+
+</html>

@@ -1,0 +1,197 @@
+ID,Code,Description,Latitude,Longitude,State
+ABE,10135,"Allentown/Bethlehem/Easton, PA: Lehigh Valley International",40.65472222,-75.43833333,PA
+ABQ,10140,"Albuquerque, NM: Albuquerque International Sunport",35.04166667,-106.6063889,NM
+ACY,10158,"Atlantic City, NJ: Atlantic City International",39.45611111,-74.57805556,NJ
+AGS,10208,"Augusta, GA: Augusta Regional at Bush Field",33.36916667,-81.96444444,GA
+ALB,10257,"Albany, NY: Albany International",42.74583333,-73.80527778,NY
+AMA,10279,"Amarillo, TX: Rick Husband Amarillo International",35.22722222,-101.7219444,TX
+ANC,10299,"Anchorage, AK: Ted Stevens Anchorage International",61.16916667,-149.9852778,AK
+ASE,10372,"Aspen, CO: Aspen Pitkin County Sardy Field",39.22416667,-106.8688889,CO
+ATL,10397,"Atlanta, GA: Hartsfield-Jackson Atlanta International",33.64083333,-84.42722222,GA
+ATW,10408,"Appleton, WI: Appleton International",44.25777778,-88.52,WI
+AUS,10423,"Austin, TX: Austin - Bergstrom International",30.19444444,-97.67,TX
+AVL,10431,"Asheville, NC: Asheville Regional",35.435,-82.54111111,NC
+AVP,10434,"Scranton/Wilkes-Barre, PA: Wilkes Barre Scranton International",41.33916667,-75.72583333,PA
+BDL,10529,"Hartford, CT: Bradley International",41.93861111,-72.68333333,CT
+BGR,10581,"Bangor, ME: Bangor International",44.80777778,-68.82777778,ME
+BHM,10599,"Birmingham, AL: Birmingham-Shuttlesworth International",33.56305556,-86.75555556,AL
+BIL,10620,"Billings, MT: Billings Logan International",45.80694444,-108.5427778,MT
+BIS,10627,"Bismarck/Mandan, ND: Bismarck Municipal",46.77888889,-100.7525,ND
+BLI,10666,"Bellingham, WA: Bellingham International",48.79444444,-122.5347222,WA
+BMI,10685,"Bloomington/Normal, IL: Central Il Regional Airport at Bloomington",40.48194444,-88.9275,IL
+BNA,10693,"Nashville, TN: Nashville International",36.12666667,-86.68194444,TN
+BOI,10713,"Boise, ID: Boise Air Terminal",43.56527778,-116.225,ID
+BOS,10721,"Boston, MA: Logan International",42.36361111,-71.00611111,MA
+BQN,10732,"Aguadilla, PR: Rafael Hernandez",18.49583333,-67.13,PR
+BTR,10781,"Baton Rouge, LA: Baton Rouge Metropolitan/Ryan Field",30.53166667,-91.15055556,LA
+BTV,10785,"Burlington, VT: Burlington International",44.47277778,-73.15305556,VT
+BUF,10792,"Buffalo, NY: Buffalo Niagara International",42.94111111,-78.73638889,NY
+BUR,10800,"Burbank, CA: Bob Hope",34.2,-118.3577778,CA
+BWI,10821,"Baltimore, MD: Baltimore/Washington International Thurgood Marshall",39.17555556,-76.67138889,MD
+BZN,10849,"Bozeman, MT: Bozeman Yellowstone International",45.78027778,-111.1594444,MT
+CAE,10868,"Columbia, SC: Columbia Metropolitan",33.93638889,-81.11583333,SC
+CAK,10874,"Akron, OH: Akron-Canton Regional",40.91388889,-81.44166667,OH
+CHA,10980,"Chattanooga, TN: Lovell Field",35.03638889,-85.20361111,TN
+CHO,10990,"Charlottesville, VA: Charlottesville Albemarle",38.14138889,-78.45305556,VA
+CHS,10994,"Charleston, SC: Charleston AFB/International",32.89916667,-80.03888889,SC
+CID,11003,"Cedar Rapids/Iowa City, IA: The Eastern Iowa",41.88444444,-91.70611111,IA
+CLE,11042,"Cleveland, OH: Cleveland-Hopkins International",41.41083333,-81.84944444,OH
+CLT,11057,"Charlotte, NC: Charlotte Douglas International",35.21916667,-80.93583333,NC
+CMH,11066,"Columbus, OH: John Glenn Columbus International",39.99111111,-82.87833333,OH
+COS,11109,"Colorado Springs, CO: City of Colorado Springs Municipal",38.80888889,-104.7091667,CO
+CRP,11140,"Corpus Christi, TX: Corpus Christi International",27.77,-97.50083333,TX
+CRW,11146,"Charleston/Dunbar, WV: Yeager",38.37277778,-81.59305556,WV
+CVG,11193,"Cincinnati, OH: Cincinnati/Northern Kentucky International",39.04777778,-84.66861111,OH
+DAB,11252,"Daytona Beach, FL: Daytona Beach International",29.1825,-81.05277778,FL
+DAL,11259,"Dallas, TX: Dallas Love Field",32.84694444,-96.85333333,TX
+DAY,11267,"Dayton, OH: James M Cox/Dayton International",39.90111111,-84.22,OH
+DCA,11278,"Washington, DC: Ronald Reagan Washington National",38.85166667,-77.03694444,DC
+DEN,11292,"Denver, CO: Denver International",39.77444444,-104.8797222,CO
+DFW,11298,"Dallas/Fort Worth, TX: Dallas/Fort Worth International",32.89444444,-97.02972222,TX
+DRO,11413,"Durango, CO: Durango La Plata County",37.15,-107.7511111,CO
+DSM,11423,"Des Moines, IA: Des Moines International",41.53388889,-93.65666667,IA
+DTW,11433,"Detroit, MI: Detroit Metro Wayne County",42.21666667,-83.34444444,MI
+ECP,11481,"Panama City, FL: Northwest Florida Beaches International",30.35777778,-85.79888889,FL
+EGE,11503,"Eagle, CO: Eagle County Regional",39.64361111,-106.9138889,CO
+ELP,11540,"El Paso, TX: El Paso International",31.80666667,-106.3772222,TX
+EUG,11603,"Eugene, OR: Mahlon Sweet Field",44.12083333,-123.2175,OR
+EVV,11612,"Evansville, IN: Evansville Regional",38.03666667,-87.5325,IN
+EWR,11618,"Newark, NJ: Newark Liberty International",40.69583333,-74.17166667,NJ
+EYW,11624,"Key West, FL: Key West International",24.55555556,-81.75972222,FL
+FAI,11630,"Fairbanks, AK: Fairbanks International",64.81444444,-147.8627778,AK
+FAR,11637,"Fargo, ND: Hector International",46.91555556,-96.81472222,ND
+FAT,11638,"Fresno, CA: Fresno Yosemite International",36.77666667,-119.7172222,CA
+FAY,11641,"Fayetteville, NC: Fayetteville Regional/Grannis Field",34.99138889,-78.88027778,NC
+FLL,11697,"Fort Lauderdale, FL: Fort Lauderdale-Hollywood International",26.07416667,-80.15166667,FL
+FNT,11721,"Flint, MI: Bishop International",42.96666667,-83.74166667,MI
+FSD,11775,"Sioux Falls, SD: Joe Foss Field",43.57888889,-96.74083333,SD
+FWA,11823,"Fort Wayne, IN: Fort Wayne International",40.97833333,-85.18805556,IN
+GCN,11869,"Grand Canyon, AZ: Grand Canyon National Park",35.95194444,-112.1475,AZ
+GEG,11884,"Spokane, WA: Spokane International",47.62,-117.5327778,WA
+GJT,11921,"Grand Junction, CO: Grand Junction Regional",39.11861111,-108.5138889,CO
+GNV,11953,"Gainesville, FL: Gainesville Regional",29.68972222,-82.27583333,FL
+GPI,11970,"Guapi, Colombia: Guapi Airport",2.58333333,-77.9,Co
+GPT,11973,"Gulfport/Biloxi, MS: Gulfport-Biloxi International",30.40611111,-89.07027778,MS
+GRB,11977,"Green Bay, WI: Green Bay Austin Straubel International",44.48805556,-88.13055556,WI
+GRK,11982,"Killeen, TX: Robert Gray AAF",31.06472222,-97.8275,TX
+GRR,11986,"Grand Rapids, MI: Gerald R. Ford International",42.88111111,-85.52416667,MI
+GSO,11995,"Greensboro/High Point, NC: Piedmont Triad International",36.09194444,-79.94277778,NC
+GSP,11996,"Greer, SC: Greenville-Spartanburg International",34.89888889,-82.21388889,SC
+GTF,12003,"Great Falls, MT: Great Falls International",47.48555556,-111.3669444,MT
+GUM,12016,"Guam, TT: Guam International",13.48388889,144.7972222,TT
+HOU,12191,"Houston, TX: William P Hobby",29.645,-95.27861111,TX
+HPN,12197,"White Plains, NY: Westchester County",41.06888889,-73.70777778,NY
+HRL,12206,"Harlingen/San Benito, TX: Valley International",26.22805556,-97.65222222,TX
+HSV,12217,"Huntsville, AL: Huntsville International-Carl T Jones Field",34.64277778,-86.77555556,AL
+IAD,12264,"Washington, DC: Washington Dulles International",38.94166667,-77.4575,DC
+IAH,12266,"Houston, TX: George Bush Intercontinental/Houston",29.98333333,-95.34,TX
+ICT,12278,"Wichita, KS: Wichita Dwight D Eisenhower National",37.65,-97.43277778,KS
+IDA,12280,"Idaho Falls, ID: Idaho Falls Regional",43.51611111,-112.0647222,ID
+ILM,12323,"Wilmington, NC: Wilmington International",34.26694444,-77.90388889,NC
+IND,12339,"Indianapolis, IN: Indianapolis International",39.72888889,-86.28166667,IN
+ISP,12391,"Islip, NY: Long Island MacArthur",40.79666667,-73.10083333,NY
+ITO,12402,"Hilo, HI: Hilo International",19.72361111,-155.0580556,HI
+IWA,12411,"Ivanovo, Russia: Ivanovo Airport",57,41,Ru
+JAC,12441,"Jackson, WY: Jackson Hole",43.60666667,-110.7369444,WY
+JAN,12448,"Jackson/Vicksburg, MS: Jackson Medgar Wiley Evers International",32.30972222,-90.07583333,MS
+JAX,12451,"Jacksonville, FL: Jacksonville International",30.48472222,-81.68777778,FL
+JFK,12478,"New York, NY: John F. Kennedy International",40.63861111,-73.77694444,NY
+JNU,12523,"Juneau, AK: Juneau International",58.35555556,-134.5747222,AK
+KOA,12758,"Kona, HI: Ellison Onizuka Kona International at Keahole",19.73888889,-156.0455556,HI
+LAN,12884,"Lansing, MI: Capital Region International",42.77916667,-84.58833333,MI
+LAS,12889,"Las Vegas, NV: McCarran International",36.08,-115.1522222,NV
+LAX,12892,"Los Angeles, CA: Los Angeles International",33.9425,-118.4080556,CA
+LBB,12896,"Lubbock, TX: Lubbock Preston Smith International",33.66222222,-101.8227778,TX
+LEX,12945,"Lexington, KY: Blue Grass",38.03972222,-84.60222222,KY
+LFT,12951,"Lafayette, LA: Lafayette Regional Paul Fournet Field",30.20472222,-91.9875,LA
+LGA,12953,"New York, NY: LaGuardia",40.77944444,-73.87583333,NY
+LGB,12954,"Long Beach, CA: Long Beach Airport",33.8175,-118.1511111,CA
+LIH,12982,"Lihue, HI: Lihue Airport",21.97916667,-159.3458333,HI
+LIT,12992,"Little Rock, AR: Bill and Hillary Clinton Nat Adams Field",34.72916667,-92.23444444,AR
+LNK,13029,"Lincoln, NE: Lincoln Airport",40.85083333,-96.75888889,NE
+MAF,13158,"Midland/Odessa, TX: Midland International Air and Space Port",31.94083333,-102.2013889,TX
+MCI,13198,"Kansas City, MO: Kansas City International",39.2975,-94.71388889,MO
+MCO,13204,"Orlando, FL: Orlando International",28.43166667,-81.32472222,FL
+MDT,13230,"Harrisburg, PA: Harrisburg International",40.19305556,-76.76222222,PA
+MDW,13232,"Chicago, IL: Chicago Midway International",41.785,-87.75194444,IL
+MEM,13244,"Memphis, TN: Memphis International",35.04972222,-89.97861111,TN
+MFE,13256,"Mission/McAllen/Edinburg, TX: McAllen Miller International",26.17694444,-98.23972222,TX
+MFR,13264,"Medford, OR: Rogue Valley International - Medford",42.37361111,-122.8722222,OR
+MGM,13277,"Montgomery, AL: Montgomery Regional",32.3,-86.39111111,AL
+MHT,13296,"Manchester, NH: Manchester-Boston Regional",42.93833333,-71.43888889,NH
+MIA,13303,"Miami, FL: Miami International",25.7925,-80.28611111,FL
+MKE,13342,"Milwaukee, WI: General Mitchell International",42.95027778,-87.89722222,WI
+MLB,13360,"Melbourne, FL: Melbourne International",28.1025,-80.64305556,FL
+MLI,13367,"Moline, IL: Quad City International",41.44888889,-90.505,IL
+MOB,13422,"Mobile, AL: Mobile Regional",30.68833333,-88.24083333,AL
+MRY,13476,"Monterey, CA: Monterey Regional",36.58805556,-121.8480556,CA
+MSN,13485,"Madison, WI: Dane County Regional-Truax Field",43.14194444,-89.33694444,WI
+MSO,13486,"Missoula, MT: Missoula International",46.91555556,-114.0875,MT
+MSP,13487,"Minneapolis, MN: Minneapolis-St Paul International",44.88611111,-93.21777778,MN
+MSY,13495,"New Orleans, LA: Louis Armstrong New Orleans International",29.99111111,-90.25138889,LA
+MYR,13577,"Myrtle Beach, SC: Myrtle Beach International",33.67916667,-78.92972222,SC
+OAK,13796,"Oakland, CA: Metropolitan Oakland International",37.72138889,-122.2208333,CA
+OGG,13830,"Kahului, HI: Kahului Airport",20.90055556,-156.4336111,HI
+OKC,13851,"Oklahoma City, OK: Will Rogers World",35.39222222,-97.60166667,OK
+OMA,13871,"Omaha, NE: Eppley Airfield",41.30194444,-95.89333333,NE
+ONT,13891,"Ontario, CA: Ontario International",34.05611111,-117.6011111,CA
+ORD,13930,"Chicago, IL: Chicago O'Hare International",41.97805556,-87.90611111,IL
+ORF,13931,"Norfolk, VA: Norfolk International",36.89583333,-76.20138889,VA
+PAE,14004,"Everett, WA: Snohomish County",47.90833333,-122.2813889,WA
+PBI,14027,"West Palm Beach/Palm Beach, FL: Palm Beach International",26.68222222,-80.09416667,FL
+PDX,14057,"Portland, OR: Portland International",45.58916667,-122.595,OR
+PGD,14082,"Punta Gorda, FL: Punta Gorda Airport",26.91916667,-81.99138889,FL
+PHF,14098,"Newport News/Williamsburg, VA: Newport News/Williamsburg International",37.13166667,-76.49333333,VA
+PHL,14100,"Philadelphia, PA: Philadelphia International",39.86805556,-75.24861111,PA
+PHX,14107,"Phoenix, AZ: Phoenix Sky Harbor International",33.43611111,-112.0094444,AZ
+PIA,14108,"Peoria, IL: General Downing - Peoria International",40.66138889,-89.68722222,IL
+PIE,14112,"St. Petersburg, FL: St Pete Clearwater International",27.90722222,-82.68555556,FL
+PIT,14122,"Pittsburgh, PA: Pittsburgh International",40.49666667,-80.23583333,PA
+PNS,14193,"Pensacola, FL: Pensacola International",30.47333333,-87.1875,FL
+PSC,14252,"Pasco/Kennewick/Richland, WA: Tri Cities",46.26388889,-119.1147222,WA
+PSP,14262,"Palm Springs, CA: Palm Springs International",33.82666667,-116.505,CA
+PVD,14307,"Providence, RI: Theodore Francis Green State",41.72833333,-71.42611111,RI
+PWM,14321,"Portland, ME: Portland International Jetport",43.64444444,-70.30361111,ME
+RAP,14457,"Rapid City, SD: Rapid City Regional",44.04527778,-103.0569444,SD
+RDM,14489,"Bend/Redmond, OR: Roberts Field",44.25444444,-121.1513889,OR
+RDU,14492,"Raleigh/Durham, NC: Raleigh-Durham International",35.87527778,-78.78194444,NC
+RIC,14524,"Richmond, VA: Richmond International",37.50527778,-77.31972222,VA
+RNO,14570,"Reno, NV: Reno/Tahoe International",39.49777778,-119.7675,NV
+ROA,14574,"Roanoke, VA: Roanoke Blacksburg Regional Woodrum Field",37.32472222,-79.97638889,VA
+ROC,14576,"Rochester, NY: Greater Rochester International",43.12138889,-77.67083333,NY
+RST,14633,"Rochester, MN: Rochester International",43.91027778,-92.49638889,MN
+RSW,14635,"Fort Myers, FL: Southwest Florida International",26.53611111,-81.755,FL
+SAN,14679,"San Diego, CA: San Diego International",32.73277778,-117.1872222,CA
+SAT,14683,"San Antonio, TX: San Antonio International",29.53333333,-98.46944444,TX
+SAV,14685,"Savannah, GA: Savannah/Hilton Head International",32.1275,-81.2025,GA
+SBA,14689,"Santa Barbara, CA: Santa Barbara Municipal",34.42777778,-119.8394444,CA
+SBN,14696,"South Bend, IN: South Bend International",41.70444444,-86.3125,IN
+SBP,14698,"San Luis Obispo, CA: San Luis County Regional",35.23666667,-120.6391667,CA
+SDF,14730,"Louisville, KY: Louisville Muhammad Ali International",38.17972222,-85.73861111,KY
+SEA,14747,"Seattle, WA: Seattle/Tacoma International",47.44722222,-122.3055556,WA
+SFB,14761,"Sanford, FL: Orlando Sanford International",28.775,-81.24027778,FL
+SFO,14771,"San Francisco, CA: San Francisco International",37.61888889,-122.375,CA
+SGF,14783,"Springfield, MO: Springfield-Branson National",37.24,-93.385,MO
+SHV,14814,"Shreveport, LA: Shreveport Regional",32.44694444,-93.82555556,LA
+SJC,14831,"San Jose, CA: Norman Y. Mineta San Jose International",37.36277778,-121.9405556,CA
+SJU,14843,"San Juan, PR: Luis Munoz Marin International",18.44,-66.00222222,PR
+SLC,14869,"Salt Lake City, UT: Salt Lake City International",40.78416667,-111.9669444,UT
+SMF,14893,"Sacramento, CA: Sacramento International",38.69555556,-121.5897222,CA
+SNA,14908,"Santa Ana, CA: John Wayne Airport-Orange County",33.67555556,-117.8669444,CA
+SRQ,14986,"Sarasota/Bradenton, FL: Sarasota/Bradenton International",27.39388889,-82.55416667,FL
+STL,15016,"St. Louis, MO: St Louis Lambert International",38.74722222,-90.36444444,MO
+STS,15023,"Santa Rosa, CA: Charles M. Schulz - Sonoma County",38.50916667,-122.8116667,CA
+STT,15024,"Charlotte Amalie, VI: Cyril E King",18.33722222,-64.97333333,VI
+STX,15027,"Christiansted, VI: Henry E. Rohlsen",17.70388889,-64.79888889,VI
+SWF,15070,"Newburgh/Poughkeepsie, NY: New York Stewart International",41.50583333,-74.09722222,NY
+SYR,15096,"Syracuse, NY: Syracuse Hancock International",43.11055556,-76.1025,NY
+TLH,15249,"Tallahassee, FL: Tallahassee International",30.39972222,-84.35194444,FL
+TPA,15304,"Tampa, FL: Tampa International",27.97305556,-82.53527778,FL
+TRI,15323,"Bristol/Johnson City/Kingsport, TN: Tri Cities",36.47611111,-82.40638889,TN
+TTN,15356,"Trenton, NJ: Trenton Mercer",40.27805556,-74.8125,NJ
+TUL,15370,"Tulsa, OK: Tulsa International",36.19777778,-95.88972222,OK
+TUS,15376,"Tucson, AZ: Tucson International",32.11611111,-110.9405556,AZ
+TVC,15380,"Traverse City, MI: Cherry Capital",44.74,-85.58583333,MI
+TYS,15412,"Knoxville, TN: McGhee Tyson",35.81222222,-83.9925,TN
+VPS,15624,"Valparaiso, FL: Eglin AFB Destin Fort Walton Beach",30.48333333,-86.52527778,FL
+XNA,15919,"Fayetteville, AR: Northwest Arkansas Regional",36.28194444,-94.30694444,AR
