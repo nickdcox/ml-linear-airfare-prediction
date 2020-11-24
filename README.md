@@ -78,7 +78,9 @@ This resulted in approximately 72 million flight records.  We then used a Python
 
 ### 4. Data Exploration
 
-xxx
+Prior to training a model it was important to understand the data we would be using, particularly the MARKET_FARE field.
+
+
 
 
 ### 5. Feature Engineering
