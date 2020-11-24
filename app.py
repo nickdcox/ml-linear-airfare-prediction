@@ -38,7 +38,7 @@ def dist(nonstop, originLat, originLong, destlat, destLong):
     return distance
 
 # Define Google Maps API key.
-GoogleMaps(app, key="AIzaSyCBDpHInB7HK7bI5oQK9JSrD4LzPfV6Epw")
+GoogleMaps(app, key="REMOVED")
 
 # Load the regression model from the binary file.
 regressor = joblib.load('model.sav')
