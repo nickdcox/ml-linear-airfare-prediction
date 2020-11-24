@@ -142,7 +142,7 @@ Our key observations include the following:
 * The origin and destination are not strongly correlated with the MARKET_FARE.
 * The month of travel is not strongly correlated with the MARKET_FARE.
 
-Our observations about ORIGIN_HAPPINESS, DEST_HAPPINESS, DEMAND, OIL_PRICE, ORIGIN_TEMP, DEST_TEMP, DEST_POLITICS and ORIGIN_POLITICS are share below.
+Our observations about ORIGIN_HAPPINESS, DEST_HAPPINESS, DEMAND, OIL_PRICE, ORIGIN_TEMP, DEST_TEMP, DEST_POLITICS and ORIGIN_POLITICS are shared below.
 
 
 ### 6. Predictive Modelling
