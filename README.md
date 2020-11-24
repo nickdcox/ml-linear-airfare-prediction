@@ -80,6 +80,16 @@ This resulted in approximately 72 million flight records.  We then used a Python
 
 Prior to training a model it was important to understand the data we would be using, particularly the MARKET_FARE field.
 
+The first boxplot below shows a distribution of the 10 million fares split by FARE_CLASS.  It shows that there are clearly outliers in the dataset, showing coach fares of more than $50,000.  The second boxplot shows the same distribution but filtered to show only fares under $2,000.  The plots give a very good idea of outliers to remove and also where the majority of the fares are distributed.  The final box plot shows the distribution after the outliers were dropped from the dataset.  We took a conservative approach and removed all fares above and below the box plot whiskers.
+
+<box plot 1> <box plot 2><box plot 3>
+
+In analyzing the MARKET_FARE data we also used a violin chart and histogram to understand the distribution and identify outliers.  The violin plot shows an unusual distribution close to $0 for all fare classes.  Upon inspecting the raw data we saw that there were many fares of $5.50.  Unable to obtain an explanation from the data source, we came to the conclusion that the fares relate to mileage award tickets where the passenger only paid the passenger facility charge for the airports they were transiting through.  The first histogram plot below also shows this unusual distribution.  We dropped all flight records where the MARKET_FARE was less than $30.  The second histogram plot shows the distribution of MARKET_FARE after the outliers were dropped.
+
+<violin plot><hist plot 1><hist plot 2>
+
+
+
 
 
 
