@@ -166,9 +166,8 @@ Our observations about ORIGIN_HAPPINESS, DEST_HAPPINESS, DEMAND, OIL_PRICE, ORIG
 
  
 XGBoost Model & Features | Effectiveness
---------------------------------------------
-Base Model Before Cleaning & Tuning | 
-Before Cleaning & Tuning | R2 Score: 0.1553 / Mean Absolute Value: $112.40
+--------|------------------
+Base Model Before Cleaning & Tuning | R2 Score: 0.1553 / Mean Absolute Value: $112.40
 
 
   
