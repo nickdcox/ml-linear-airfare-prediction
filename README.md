@@ -158,7 +158,157 @@ Our observations about ORIGIN_HAPPINESS, DEST_HAPPINESS, DEMAND, OIL_PRICE, ORIG
 
 ### 6. Predictive Modelling
 
-xxx
+* After data cleaning and removal of outliers, 8.7 million flight records were available for model training and validation.
+* We trained Random Forest, Light GBM and XGBoost multiple regression models using 90% of our cleaned data-set and tested with the remaining 10%.
+* XGBoost proved to be the most effective model, so we then used GridSearchCV to tune the hyperparameters, thus further enhancing the effectiveness of the predictive model.
+* The effectiveness of the model was determined by the R2 Score and Mean Absolute Value (avg. error of prediction).
+
+
+ 
+XGBoost Model & Features | Effectiveness
+--------------------------------------------
+Base Model Before Cleaning & Tuning | 
+Before Cleaning & Tuning | R2 Score: 0.1553 / Mean Absolute Value: $112.40
+
+
+  
+ 
+ 
+  
+  Base Model After Cleaning & Tuning
+
+
+  
+  
+  R2 Score: 0.3925
+
+
+  Mean Absolute Value: $69.50
+
+
+  
+ 
+ 
+  
+  Base Model + High Temps
+
+
+  
+  
+  R2
+  Score: 0.3948
+
+
+  Mean
+  Absolute Value: $69.30
+
+
+  
+ 
+ 
+  
+  Base Model + Oil Price
+
+
+  
+  
+  R2
+  Score: 0.3919
+
+
+  Mean
+  Absolute Value: $69.53
+
+
+  
+ 
+ 
+  
+  Base Model + Demand 
+
+
+  
+  
+  R2
+  Score: 0.3917
+
+
+  Mean
+  Absolute Value: $69.53
+
+
+  
+ 
+ 
+  
+  Base Model + Politics
+
+
+  
+  
+  R2
+  Score: 0.3960
+
+
+  Mean
+  Absolute Value: $69.26
+
+
+  
+ 
+ 
+  
+  Base Model + Happiness
+
+
+  
+  
+  R2
+  Score: 0.4050
+
+
+  Mean
+  Absolute Value: $68.64
+
+
+  
+ 
+ 
+  
+  Base Model + McDonalds
+
+
+  
+  
+  R2
+  Score: 0.4045
+
+
+  Mean
+  Absolute Value: $68.69
+
+
+  
+ 
+ 
+  
+  Base Model + Prosperity
+
+
+  
+  
+  R2
+  Score: 0.4049
+
+
+  Mean
+  Absolute Value: $68.67
+
+
+  
+ 
+
+
 
 
 ### 7. Data Visualization
