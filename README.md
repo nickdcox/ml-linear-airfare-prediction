@@ -63,7 +63,7 @@ https://wallethub.com/edu/happiest-states/6959
 
 **The United States Prosperity Index:** An index is calculated for each state based on safety and security, personal, freedom, governance, social capital, investment environment, enterprise conditions, market access and infrastructure, economic quality, living conditions, health, education and natural environment.\
 Source: Legatum Institute\
-https://li.com/wp-content/uploads/2019/07/USPI_web.pdf
+https://li.com/wp-content/uploads/2019/07/USPI_web.pdf
 
 
 ### 3. Data Cleaning
@@ -117,9 +117,9 @@ FARE_CLASS_Business |	0.378445
 MARKET_MILES_FLOWN  |  	0.292735
 FARE_CLASS_First   |   	0.171113
 TICKET_CARRIER_UA   | 	0.066108
-TICKET_CARRIER_DL  ||   	0.063162
+TICKET_CARRIER_DL  |   	0.063162
 ORIGIN_HAPPINESS   |  	0.041592
-DEST_HAPPINESS    ||   	0.040759
+DEST_HAPPINESS    | 	0.040759
 TICKET_CARRIER_HA   |  	0.028203
 DEMAND           |     		0.020218
 OIL_PRICE        |     		0.017079
