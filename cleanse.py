@@ -170,6 +170,8 @@ rows = content.split("\n")
 weather = {}
 politics = {}
 happiness = {}
+mcdonalds = {}
+prosperity = {}
 
 for row in rows:
     if(row != ""):
@@ -177,6 +179,8 @@ for row in rows:
         weather[state[1]] = [state[2], state[3], state[4], state[5], state[6], state[7], state[8], state[9], state[10], state[11], state[12], state[13]]
         politics[state[1]] = state[14]
         happiness[state[1]] = state[15]
+        mcdonalds[state[1]] = state[16]
+        prosperity[state[1]] = state[17]
 
 # Add average high temperature for origin and destination airports based on month of travel.
 def temp(state, month):
@@ -230,6 +234,27 @@ flight_data_sample['DEST_HAPPINESS'] = flight_data_sample.apply(lambda x: happy(
 
 timestamp("Completed Happiness")
 print(flight_data_sample.shape)
+
+# Add mcdonalds for origin and destination airports.
+def mcd(state):
+    return mcdonalds[state]
+
+flight_data_sample['ORIGIN_MCDONALDS'] = flight_data_sample.apply(lambda x: mcd(x['ORIGIN_STATE']), axis=1)
+flight_data_sample['DEST_MCDONALDS'] = flight_data_sample.apply(lambda x: mcd(x['DEST_STATE']), axis=1)
+
+timestamp("Completed McDonalds")
+print(flight_data_sample.shape)
+
+# Add prosperity for origin and destination airports.
+def prospIndex(state):
+    return prosperity[state]
+
+flight_data_sample['ORIGIN_PROSPERITY'] = flight_data_sample.apply(lambda x: prospIndex(x['ORIGIN_STATE']), axis=1)
+flight_data_sample['DEST_PROSPERITY'] = flight_data_sample.apply(lambda x: prospIndex(x['DEST_STATE']), axis=1)
+
+timestamp("Completed Prosperity")
+print(flight_data_sample.shape)
+
       
 # Drop columns unnecessary for the prediction model.
 flight_data_sample = flight_data_sample.drop(['AIRPORT_GROUP'], axis = 1)

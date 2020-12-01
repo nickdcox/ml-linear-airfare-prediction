@@ -142,7 +142,7 @@ def fitRF():
 # Function for XGBoost model hyperparameter tuning.
 def tuneLGBM():
 
-    # Original param_grid  HAVE NEVER TUNED LGBM - NEED TO RESEARCH OPTIONS
+    # Original param_grid
     param_grid1 = {'learning_rate': [0.01,0.1,0.5,0.9],
                    'n_estimators': [200],
                    'subsample': [0.3, 0.5, 0.9]}
@@ -182,20 +182,6 @@ def fitLGBM():
 
     printModelMetrics(y_test, y_pred)  
     
-    
-# Function for fitting neural network regression model, making predictions on test data, printing model metrics and plotting results chart.
-def fitMLPR():
-    
-    # Final selection of hyperparameters following tuning.
-    regressor = MLPRegressor(hidden_layer_sizes=(8,8,8),activation="relu", random_state=42, max_iter=200)
-
-    # Fit the model with training data. 
-    regressor.fit(X_train, y_train)
-    
-    # Make predictions on the testing data.
-    y_pred = regressor.predict(X_test)
-
-    printModelMetrics(y_test, y_pred)  
 
 # ===========================================================================================================
 # Functions to print hyperparameters and model metrics.
@@ -220,7 +206,7 @@ def printModelMetrics(y_test, y_pred):
     plt.scatter(y_test, y_pred, s=1)
     plt.xlabel("True Values")
     plt.ylabel("Predictions")
-
+    
 
 # ===========================================================================================================
 # Transform cleansed data into training and validation data sets.
@@ -230,12 +216,12 @@ def printModelMetrics(y_test, y_pred):
 flight_data = pd.read_csv('cleaned_data.csv')
 
 # Encode categorical fields as numeric.
-flight_data = pd.get_dummies(data=flight_data,columns=['FARE_CLASS','TICKET_CARRIER'])
-corr_matrix = flight_data.corr()
-corr_matrix["MARKET_FARE"].sort_values(ascending=False)
-# Define feature and target datasets.
+flight_data = pd.get_dummies(data=flight_data,columns=['FARE_CLASS','TICKET_CARRIER'], drop_first = True)
+
+# Define feature and target datasets.  Remove features from drop to add them to the model, e.g. happiness.
 X = flight_data.drop(['MARKET_FARE', 'ORIGIN_STATE', 'DEST_STATE', 'QUARTER', 'ORIGIN_HAPPINESS', 'DEST_HAPPINESS',
-                      'OIL_PRICE', 'DEMAND', 'ORIGIN_POLITICS', 'DEST_POLITICS', 'ORIGIN_TEMP', 'DEST_TEMP'], axis=1)
+                      'OIL_PRICE', 'DEMAND', 'ORIGIN_POLITICS', 'DEST_POLITICS', 'ORIGIN_TEMP', 'DEST_TEMP',
+                      'ORIGIN_MCDONALDS', 'DEST_MCDONALDS', 'ORIGIN_PROSPERITY', 'DEST_PROSPERITY'], axis=1)
 y = flight_data['MARKET_FARE']
 
 # Create training and valdiation datasets.
