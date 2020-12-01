@@ -5,7 +5,7 @@
 
 The objectives of this project are to:
 1. Build a multiple regression model to predict the price of US domestic airfares using a base set of numeric and categorical features (origin, destination, airline, class, month of travel and number of stops on route).
-2. Add additional features to the data-set to determine if each individually has a positive or negative effect on the effectiveness of the model to predict airfares, e.g., weather, monthly demand, monthly oil price, politics and happiness.
+2. Add additional features to the data-set to determine if each individually has a positive or negative effect on the effectiveness of the model to predict airfares, e.g., weather, monthly demand, monthly oil price, politics, happiness,McDonalds locations and prosperity..
 
 
 ### 2. Data Mining
@@ -61,6 +61,10 @@ https://www.usclimatedata.com/
 Source: Wallet Hub\
 https://wallethub.com/edu/happiest-states/6959
 
+**The United States Prosperity Index:** An index is calculated for each state based on safety and security, personal, freedom, governance, social capital, investment environment, enterprise conditions, market access and infrastructure, economic quality, living conditions, health, education and natural environment.\
+Source: Legatum Institute\
+https://li.com/wp-content/uploads/2019/07/USPI_web.pdf
+
 
 ### 3. Data Cleaning
 
@@ -102,38 +106,45 @@ The following features were added to extend the base model and determine if they
 * DEMAND – Monthly US domestic travel demand for origin and destination states.
 * POLITICS_ORIGIN, POLITICS_DEST – Political leaning of origin and destination states in the 2016 presidential election.
 * HAPPINESS_ORIGIN, HAPPINESS DEST – Happiness of origin and destination states based on multiple factors.
+* ORIGIN_MCDONALDS, DEST_MCDONALDS – Number of McDonalds restaurants per 100,000 population in origin and destination states.
+* ORIGIN_PROSPERITY, DEST_PROSPERITY – Relative prosperity of origin and destination states.
 
 Following feature engineering we checked the correlation between MARKET_FARE and all other features, with the following results:
 Feature | Correlation Score
 --------|------------------
-MARKET_FARE            |	1.000000
-FARE_CLASS_Business    |	0.378455
-MARKET_MILES_FLOWN     |	0.292465
-FARE_CLASS_First      |	0.170475
-TICKET_CARRIER_AA     | 	0.077141
-TICKET_CARRIER_UA     | 	0.066777
-TICKET_CARRIER_DL     | 	0.063281
-ORIGIN_HAPPINESS      | 	0.042429
-DEST_HAPPINESS       | 	0.040588
-TICKET_CARRIER_HA    |  	0.026969
-DEMAND                | 	0.020645
-OIL_PRICE             | 	0.017098
-ORIGIN_TEMP           | 	0.01666
-TICKET_CARRIER_AS     | 	0.015838
-DEST_TEMP            |	0.014682
-DEST_AIRPORT_ID      |  	0.011019
-ORIGIN_AIRPORT_ID    | 	0.010058
-MONTH                |  	0.005757
-TICKET_CARRIER_B6    |	-0.014762
-TICKET_CARRIER_SY    |	-0.024571
-DEST_POLITICS        |	-0.025608
-ORIGIN_POLITICS      | 	-0.027026
-TICKET_CARRIER_F9    | 	-0.093829
-TICKET_CARRIER_G4    | 	-0.113678
-NON_STOP             | 	-0.137562
-TICKET_CARRIER_WN    |	-0.144303
-TICKET_CARRIER_NK    | 	-0.160832
-FARE_CLASS_Coach     | 	-0.415193
+MARKET_FARE         |  	1.000000
+FARE_CLASS_Business |	0.378445
+MARKET_MILES_FLOWN  |  	0.292735
+FARE_CLASS_First   |   	0.171113
+TICKET_CARRIER_UA   | 	0.066108
+TICKET_CARRIER_DL  ||   	0.063162
+ORIGIN_HAPPINESS   |  	0.041592
+DEST_HAPPINESS    ||   	0.040759
+TICKET_CARRIER_HA   |  	0.028203
+DEMAND           |     		0.020218
+OIL_PRICE        |     		0.017079
+TICKET_CARRIER_AS  |  	0.016238
+ORIGIN_TEMP       |   	0.015954
+DEST_TEMP          |   		0.014626
+DEST_AIRPORT_ID     |  	0.011437
+ORIGIN_AIRPORT_ID   |  	0.009993
+QUARTER             |  		0.005710
+MONTH               |  		0.005522
+DEST_MCDONALDS      |  	 -0.014219
+TICKET_CARRIER_B6   | 	 -0.014381
+ORIGIN_MCDONALDS    | 	 -0.014802
+ORIGIN_PROSPERITY   | 	 -0.015198
+DEST_PROSPERITY     | 	 -0.015508
+TICKET_CARRIER_SY   | 	 -0.025306
+DEST_POLITICS      |  	 -0.026212
+ORIGIN_POLITICS    |  	 -0.026817
+TICKET_CARRIER_F9  |  	 -0.093797
+TICKET_CARRIER_G4  |  	 -0.113959
+NON_STOP           |  	 -0.137146
+TICKET_CARRIER_WN   |	 -0.144620
+TICKET_CARRIER_NK   |	 -0.160774
+FARE_CLASS_Coach    | 	 -0.415920
+
 
 Our key observations include the following:
 * FARE_CLASS and MARKET_MILES_FLOWN are strongly correlated with MARKET_FARE.
@@ -142,7 +153,7 @@ Our key observations include the following:
 * The origin and destination are not strongly correlated with the MARKET_FARE.
 * The month of travel is not strongly correlated with the MARKET_FARE.
 
-Our observations about ORIGIN_HAPPINESS, DEST_HAPPINESS, DEMAND, OIL_PRICE, ORIGIN_TEMP, DEST_TEMP, DEST_POLITICS and ORIGIN_POLITICS are shared below.
+Our observations about ORIGIN_HAPPINESS, DEST_HAPPINESS, DEMAND, OIL_PRICE, ORIGIN_TEMP, DEST_TEMP, DEST_POLITICS, ORIGIN_POLITICS, ORIGIN_MCDONALDS, DEST_MCDONALDS, ORIGIN_PROSPERITY and DEST_PROSPERITY are shared below.
 
 
 ### 6. Predictive Modelling
