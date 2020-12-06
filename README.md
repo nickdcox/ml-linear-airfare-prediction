@@ -4,7 +4,7 @@
 ### 1. Problem Statement
 
 The objectives of this project are to:
-1. Build a multiple regression model to predict the price of US domestic airfares using a base set of numeric and categorical features (origin, destination, airline, class, month of travel and number of stops on route).  Develop a web interface to interact with the model.
+1. Build a multiple regression model to predict the price of US domestic airfares using a base set of numeric and categorical features (origin, destination, airline, class, month of travel and number of stops enroute).  Develop a web interface to interact with the model.
 2. Add additional features to determine if each individually has a positive or negative effect on the effectiveness of the model to predict airfares, e.g., weather, monthly demand, monthly oil price, politics, happiness, McDonalds locations and prosperity.  
 
 Our hypothesis is that inclusion of demand and oil price would increase the effectiveness of the model, weather may increase the effectiveness of the model due to its likely impact on demand for flights, however politics, happiness, McDonalds locations and prosperity should not increase the effectiveness of the model.
@@ -78,4 +78,4 @@ The trained model was saved to the *model.sav* file for use by the web user inte
 
 The *app.py* files provides the code we used to create the Flask and Google Map web user interface.  Data from the *airport_codes.csv* file on the OneDrive was used to map from BTS airport codes to airport codes more familiar to users (e.g., JFK, LAX) and to provide GPS coordinates for the Google Map API to map flight routes.
 
-The web application is available at http://nickdcox.pythonanywhere.com/ and can be used just like a standard airline booking engine, by selecting options from the drop-down boxes and clicking predict.  The web application utilizes the base model that we produced.
+The web application is available at http://nickdcox.pythonanywhere.com/ and can be used just like a standard airline booking engine, by selecting options from the drop-down boxes and clicking predict.  The web application utilizes the XGBoost model with the base set of features.
