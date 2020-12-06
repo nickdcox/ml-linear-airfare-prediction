@@ -22,7 +22,7 @@ For the purposes of this project a flight is defined as a journey from an origin
 The data files we obtained from the BTS are available on this OneDrive: https://1drv.ms/u/s!AoQYKisAOe1libAJ8n00FqjMYMS7tA?e=jcbSLh, as they are too large to be hosted on GitHub.  The BTS Data folder contains 8 files, 4 from the DB1BCoupon table and 4 from the DB1BMarket table.  Each file contains data for a quarter in 2019.
 
 #### Other Data:
-The remaining data was obtained from a variety of sources, as listed below.  This data can be found either in the *state_info.csv* file on the OneDrive or in the *cleanse.py* file.  The data in the *state_info.csv* represents the following, based on column: 1-2 state, 3-14 average temperature per month January to December, 15 democratic or republican state, 16 happiness index, 17 McDonalds locations per 100,000 capita, and 18 prosperity index.
+The remaining data was obtained from a variety of sources, as listed below.  This data can be found either in the *state_info.csv* file on the OneDrive or in the *cleanse.py* file.  The data in the *state_info.csv* file represents the following, based on column: 1-2 state, 3-14 average temperature per month January to December, 15 democratic or republican state, 16 happiness index, 17 McDonalds locations per 100,000 capita, and 18 prosperity index.
 
 **Historical Crude Oil Prices (2011 – 2019):** An average of oil prices was calculated for each month of the year based on data from 2011 to 2019.\
 Source: Inflation Data\
