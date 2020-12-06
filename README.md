@@ -9,6 +9,7 @@ The objectives of this project are to:
 
 Our hypothesis is that inclusion of demand and oil price would increase the effectiveness of the model, weather may increase the effectiveness of the model due to its likely impact on demand for flights, however politics, happiness, McDonalds locations and prosperity should not increase the effectiveness of the model.
 
+Note: All files for this project are available in this GitHub repo with the exception of data files that are larger than 100MB.  They are avaialable from the following OneDrive: https://1drv.ms/u/s!AoQYKisAOe1libAJ8n00FqjMYMS7tA?e=jcbSLh.
 
 ### 2. Data Mining
 
