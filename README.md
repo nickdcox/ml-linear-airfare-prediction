@@ -1,11 +1,13 @@
 ## 🛩 CIS 9650 Fall 2020 Group Project: United States Domestic Airfare Prediction
 **Group Members:** Anna Bae, Dewan Choudhury, Nick Cox, Janerisa Encarnacion, Rebeka Haque, Duyen Nguyen
 
-### 1. Business Understanding
+### 1. Problem Statement
 
 The objectives of this project are to:
-1. Build a multiple regression model to predict the price of US domestic airfares using a base set of numeric and categorical features (origin, destination, airline, class, month of travel and number of stops on route).
-2. Add additional features to the data-set to determine if each individually has a positive or negative effect on the effectiveness of the model to predict airfares, e.g., weather, monthly demand, monthly oil price, politics, happiness,McDonalds locations and prosperity..
+1. Build a multiple regression model to predict the price of US domestic airfares using a base set of numeric and categorical features (origin, destination, airline, class, month of travel and number of stops on route).  Develop a web interface to interact with the model.
+2. Add additional features to determine if each individually has a positive or negative effect on the effectiveness of the model to predict airfares, e.g., weather, monthly demand, monthly oil price, politics, happiness, McDonalds locations and prosperity.  
+
+Our hypothesis is that inclusion of demand and oil price would increase the effectiveness of the model, weather may increase the effectiveness of the model due to its likely impact on demand for flights, however politics, happiness, McDonalds locations and prosperity should not increase the effectiveness of the model.
 
 
 ### 2. Data Mining
@@ -17,26 +19,7 @@ The database has three tables: DB1BCoupon, DB1BMarket and DB1BTicket.  The first
 
 For the purposes of this project a flight is defined as a journey from an origin airport to a destination airport with zero or more stops in between.
 
-**DB1BCoupon:** 
-* ITIN_ID - To join with the DB1BMarket table.
-* FARE_CLASS - The class of travel for the flight: Coach (X, Y), Business (C, D) First (F, G).  This field is not available in the DB1BMarket table.
-
-**DB1BMarket:** 
-* ITIN_ID - To join with the DB1BCoupon table.
-* YEAR - Year the flight took place.  This field was not used.
-* QUARTER - Quarter the flight took place.
-* ORIGIN_AIRPORT_ID	ORIGIN - ID for the origin airport of the flight.
-* ORIGIN - Three letter code for the origin airport of the flight.
-* DEST_AIRPORT_ID	DEST - ID for the destination airport of the flight.
-* DEST - Three letter code for the destination airport of the flight.
-* AIRPORT_GROUP - List of airports that the flight operated through, including origin and destination.
-* TICKET_CARRIER - Airline operating the flight.
-* BULK_FARE - An indicator to signify whether the flight was purchased in bulk.
-* PASSENGERS - Number of passengers booked together on the flight.
-* MARKET_FARE - Actual fare for the flight.  This is the target value that we will be trying to predict.
-* MARKET_MILES_FLOWN - Actual miles flown.
-* NONSTOP_MILES - Nonstop mies directly from origin to destination.
-
+The data files we obtained from the BTS are available on this OneDrive: https://1drv.ms/u/s!AoQYKisAOe1libAJ8n00FqjMYMS7tA?e=jcbSLh.  The BTS Data folder contains 8 files, 4 from the DB1BCoupon table and 4 from the DB1BMarket table.  Each files contains data for a quarter in 2019.
 
 #### Other Data:
 The remaining data was obtained from a variety of sources, as listed below.
@@ -67,6 +50,9 @@ https://li.com/wp-content/uploads/2019/07/USPI_web.pdf
 
 
 ### 3. Data Cleaning
+
+The *cleanse.py* file provides the code we used to 
+
 
 The first step in cleaning the data was to concatenate the quaterly datasets into a single dataset for both DB1BCoupon and DB1BMarket and then to merge the resulting two datasets into one.
 
