@@ -71,7 +71,9 @@ Data for training the model was imported from the *cleaned_data.csv* file, as de
 
 The *model.py* file provides the code we used to train and vaildate several multiple regression models - Random Forest, Light BGM and XGBoost.  XGBoost proved to be the  most effective model, so we then used GridSearchCV to tune the hyperparameters, thus further enhancing the effectiveness of the predictive model.  The effectiveness of the model was determined by the R2 Score and Mean Absolute Value (avg. error of prediction).
 
-The trained model was saved to the *model.sav* file for use by the web user interface.
+Following training of the model using the base set of features, we introduced the additional features to the model one at a time to determine whether each would increase or decrease the effectiveness of the model compared to the model using just the base set of features.  The PPT file included in our GitHub repo provides the results.
+
+The trained model, using the base set of features was saved to the *model.sav* file for use by the web user interface.
 
 
 ### 5. Web User Interface
