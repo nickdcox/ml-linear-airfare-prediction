@@ -1,26 +1,33 @@
-## 🛩 CIS 9650 Fall 2020 Group Project: United States Domestic Airfare Prediction
-**Group Members:** Anna Bae, Dewan Choudhury, Nick Cox, Janerisa Encarnacion, Rebeka Haque, Duyen Nguyen
+### ml-linear-airfare-prediction
+## Project: What factors impact the accuracy of airfare prediction?
 
-### 1. Problem Statement
+[![forthebadge made-with-python](http://ForTheBadge.com/images/badges/made-with-python.svg)](https://www.python.org/)
 
-The objectives of this project are to:
-1. Build a multiple regression model to predict the price of US domestic airfares using a base set of numeric and categorical features (origin, destination, airline, class, month of travel and number of stops enroute).  Develop a web interface to interact with the model.
-2. Add additional features to determine if each individually has a positive or negative effect on the effectiveness of the model to predict airfares, e.g., weather, monthly demand, monthly oil price, politics, happiness, McDonalds locations and prosperity.  
+**Objective:** 
+* Build a multiple regression model to predict the price of US domestic airfares using a base set of numeric and categorical features (origin, destination, airline, class, month of travel and number of stops on route).
+* Develop a web interface to interact with the model (http://nickdcox.pythonanywhere.com/).
+* Add additional features to the dataset to determine if each individually has a positive or negative effect on the effectiveness of the model to predict airfares, e.g., weather, monthly demand, monthly oil price, politics, happiness, McDonalds locations and prosperity.
 
-Our hypothesis is that inclusion of demand and oil price would increase the effectiveness of the model, weather may increase the effectiveness of the model due to its likely impact on demand for flights, however politics, happiness, McDonalds locations and prosperity should not increase the effectiveness of the model.
+**Hypothesis:** That inclusion of demand and oil price would increase the effectiveness of the model, weather may increase the effectiveness of the model due to its likely impact on demand for flights, however politics, happiness, McDonalds locations and prosperity should not increase the effectiveness of the model.
 
-Note: All files for this project are available in this GitHub repo with the exception of data files that are larger than 100MB.  They are avaialable from the following OneDrive: https://1drv.ms/u/s!AoQYKisAOe1libAJ8n00FqjMYMS7tA?e=jcbSLh.
+**Tools Used:** Python, Pandas, scikit-learn, XGBoost, Light GBM, Flask, Google Maps API, Matplotlib
 
-### 2. Data Mining
+**Skills Demonstrated:** Data Cleaning, Feature Engineering, Exploratory Data Analysis, Machine Learning - Linear Regression Models, Data Visualization, Model Deployment
+
+**Conclusions:**
+* The addition of oil price and demand features had a negative impact on the effectiveness of the model to predict US domestic airfares.
+* The addition of weather, politics, happiness, McDonalds locations and prosperity features each had a positive impact on the effectiveness of the model.  Happiness, McDonalds locations and prosperity each improved the effectiveness of the model as measured by the R2 score.
+
+
+
+#### 1. Data Acquisition
 
 #### AirFare Data:
 The primary source of data for this project is the Airline Origin and Destination Survey (DB1B) database made available by the Bureau of Transportation Statistics (BTS) at https://www.transtats.bts.gov/DatabaseInfo.asp?DB_ID=125.  The Airline Origin and Destination Survey is a 10% sample of airline tickets from reporting carriers collected by the Office of Airline Information of the Bureau of Transportation Statistics. Data includes origin, destination and other itinerary details of passengers transported. This database is used to determine air traffic patterns, air carrier market shares and passenger flows.
 
-The database has three tables: DB1BCoupon, DB1BMarket and DB1BTicket.  The first contains coupon-specific information for each domestic itinerary, the second contains directional market characteristics of each domestic itinerary and the last contains summary characteristics of each domestic itinerary.  The first two tables were used for the purposes of this project.  We downloaded data for the period January 1 to December 31, 2019.
+The database has three tables: DB1BCoupon, DB1BMarket and DB1BTicket.  The first contains coupon-specific information for each domestic itinerary, the second contains directional market characteristics of each domestic itinerary and the last contains summary characteristics of each domestic itinerary.  The first two tables were used for the purposes of this project.  I downloaded data for the period January 1 to December 31, 2019.
 
 For the purposes of this project a flight is defined as a journey from an origin airport to a destination airport with zero or more stops in between.
-
-The data files we obtained from the BTS are available on this OneDrive: https://1drv.ms/u/s!AoQYKisAOe1libAJ8n00FqjMYMS7tA?e=jcbSLh, as they are too large to be hosted on GitHub.  The BTS Data folder contains 8 files, 4 from the DB1BCoupon table and 4 from the DB1BMarket table.  Each file contains data for a quarter in 2019.
 
 #### Other Data:
 The remaining data was obtained from a variety of sources, as listed below.  This data can be found either in the *state_info.csv* file on the OneDrive or in the *cleanse.py* file.  The data in the *state_info.csv* file represents the following, based on column: 1-2 state, 3-14 average temperature per month January to December, 15 democratic or republican state, 16 happiness index, 17 McDonalds locations per 100,000 capita, and 18 prosperity index.
@@ -50,9 +57,9 @@ Source: Legatum Institute\
 https://li.com/wp-content/uploads/2019/07/USPI_web.pdf
 
 
-### 3. Data Cleaning, Data Exploration and Feature Engineering
+#### 2. Data Cleaning, Data Exploration and Feature Engineering
 
-The *cleanse.py* file provides the code we used to clean the data obtained from the BTS.  The following steps were undertaken:
+The *cleanse.py* file provides the code I used to clean the data obtained from the BTS.  The following steps were undertaken:
 * Concatenation of the quarterly datasets into a single dataset for both DB1BCoupon and DB1BMarket and then to merge the resulting two datasets into one.
 * Records that may skew the prediction model were removed, e.g. small regional airlines, null values, bulk reservations.
 * Unneeded columns were dropped.
@@ -61,12 +68,12 @@ A random sample of 10 million flight records was taken from the cleaned dataset 
 
 During data exploration we identified a significant number of outliers in both directions, e.g. coach fares over $50,000 and many fares at $5.50.  These outliers were removed from the dataset.
 
-Next we engineered features to better represent non-stop flights, fare class and month of travel.  Features were then added per step 2 of our problem statement for weather, oil price, demand, politics, happiness, McDonalds locations and propensity.  This data either came from the *state_info.csv* file on the OneDrive or was included in the *cleanse.py* file.  A mapping of airport to the state it resides in was obtained from the *airport_codes_all.csv* file on the OneDrive.
+Next I engineered features to better represent non-stop flights, fare class and month of travel.  Features were then added per step 2 of our problem statement for weather, oil price, demand, politics, happiness, McDonalds locations and propensity.  This data either came from the *state_info.csv* file on the OneDrive or was included in the *cleanse.py* file.  A mapping of airport to the state it resides in was obtained from the *airport_codes_all.csv* file on the OneDrive.
 
 Following all of these steps, 8.7 million records remained for model training and validation and were output to the *cleaned_data.csv* file, available from the OneDrive.
 
 
-### 4. Predictive Modelling
+#### 3. Predictive Modelling
 
 Data for training the model was imported from the *cleaned_data.csv* file, as described in the section above.
 
@@ -77,7 +84,7 @@ Following training of the model using the base set of features, we introduced th
 The trained model, using the base set of features was saved to the *model.sav* file for use by the web user interface.
 
 
-### 5. Web User Interface
+#### 4. Web User Interface / Model Deployment
 
 The *app.py* files provides the code we used to create the Flask and Google Map web user interface.  Data from the *airport_codes.csv* file on the OneDrive was used to map from BTS airport codes to airport codes more familiar to users (e.g., JFK, LAX) and to provide GPS coordinates for the Google Map API to map flight routes.
 
